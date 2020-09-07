@@ -1,0 +1,41 @@
+{
+  "name": "webpack-symlink-plugin",
+  "version": "1.0.0",
+  "description": "A webpack plugin to make symlink of other directory in source directory before compilation.",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">= 10.13.0"
+  },
+  "scripts": {
+    "clean": "del-cli dist",
+    "prebuild": "npm run clean",
+    "build": "cross-env NODE_ENV=production babel src -d dist --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huadong/symlinks-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "symlink"
+  ],
+  "author": "Danny Zhong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huadong/symlinks-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/huadong/symlinks-webpack-plugin#readme",
+  "peerDependencies": {
+    "webpack": "^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "cross-env": "^7.0.2",
+    "del": "^5.1.0",
+    "del-cli": "^3.0.1"
+  }
+}
