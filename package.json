@@ -15,6 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/huadong/symlinks-webpack-plugin.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "keywords": [
     "webpack",
     "plugin",
