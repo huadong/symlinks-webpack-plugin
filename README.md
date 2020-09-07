@@ -4,7 +4,7 @@ A webpack plugin to make symlink of other directory in source directory before c
 ## Installation
 
 ```bash
-npm i -D webpack-symlink-plugin
+npm i -D @zhuyin/webpack-symlink-plugin
 ```
 
 ## Usage
