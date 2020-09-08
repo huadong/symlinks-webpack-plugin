@@ -1,6 +1,6 @@
 {
   "name": "@zhuyin/webpack-symlink-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A webpack plugin to make symlink of other directory in source directory before compilation.",
   "main": "dist/index.js",
   "engines": {

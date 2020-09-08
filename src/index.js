@@ -3,8 +3,8 @@ import { mkdirsSync } from 'fs-extra';
 import { relative, resolve, dirname } from 'path';
 
 class SymlinkPlugin {
-  constructor(config = [], options = {stats: false}) {
-    this.sources = Array.isArray(config) ? config : [config];
+  constructor(sources = [], options = {stats: false}) {
+    this.sources = Array.isArray(sources) ? sources : [sources];
     this.options = options || {};
   }
 
@@ -55,7 +55,19 @@ class SymlinkPlugin {
 
           if (!created) {
             logger.info(`create symlink: ${to} -> ${from}`);
-            symlinkSync(relativePath, to);
+            // detect file type for windows
+            let type = 'junction'; // default
+            if (source.type) {
+              type = source.type;
+            } else {
+              // do detection
+              if (existsSync(from)) {
+                if (lstatSync(from).isFile()) {
+                  type = 'file';
+                }
+              }
+            }
+            symlinkSync(relativePath, to, type);
           }
         } else {
           logger.warn(`failed to create symlink: ${to} -> ${from}, ${from} doesn't exist.`);

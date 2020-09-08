@@ -9,6 +9,19 @@ npm i -D @zhuyin/webpack-symlink-plugin
 
 ## Usage
 
+```js
+// declare
+new SymlinkPlugin(sources: {
+  from: string; // source
+  to: string; // symlink
+  force: boolean = false; // always create symlink to from whatever exist
+  type: 'file' | 'dir' | 'junction' = 'junction'; // symlink type for windows, used by fs.symlinkSync()
+}[] = [], options: {
+  stats: boolean = false
+})
+
+```
+
 In your webpack config:
 
 ```js
@@ -33,8 +46,8 @@ module.exports = {
   // ...etc
   plugins: [
     new SymlinkPlugin([
-      { origin: 'index.html', symlink: '200.html' },
-      { origin: 'index.html', symlink: '404.html' },
+      { from: 'index.html', to: '200.html' },
+      { from: 'index.html', to: '404.html' },
     ])
   ]
 };
@@ -50,8 +63,8 @@ module.exports = {
   // ...etc
   plugins: [
     new SymlinkWebpackPlugin([
-      { origin: 'index.html', symlink: '200.html', force: true },
-      { origin: 'index.html', symlink: '404.html' },
+      { from: 'index.html', to: '200.html', force: true },
+      { from: 'index.html', to: '404.html' },
     ], { stats: true })
   ]
 };
@@ -70,8 +83,8 @@ module.exports = {
   // ...etc
   plugins: [
     new SymlinkWebpackPlugin([
-      { origin: 'index.html', symlink: '200.html' },
-      { origin: 'index.html', symlink: '404.html' },
+      { from: 'index.html', to: '200.html' },
+      { from: 'index.html', to: '404.html' },
     ], { stats: true })
   ]
 };
